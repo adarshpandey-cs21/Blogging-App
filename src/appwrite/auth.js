@@ -22,15 +22,14 @@ export class AuthService{
                 return userAccount;
             }
         }catch(error){
-            console.log(error);
-            return null;
+            throw error;
         }
     }
     async login({email,password}){
         try{
            return await this.account.createEmailSession(email,password); 
         }catch(error){
-            console.log(error);
+            throw error;
         }
     }
 

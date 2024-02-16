@@ -54,7 +54,8 @@ function PostForm({post}) {
             return value
             .trim().
             toLowerCase()
-            .replace(/[^a-z0-9-]+/g,'-')
+            .replace(/[^a-zA-Z\d\s]+/g, "-")
+            .replace(/\s/g, "-");
         }
         return ''
     },[])
