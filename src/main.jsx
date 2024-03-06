@@ -19,9 +19,18 @@ const router=createBrowserRouter([
     path:'/',
     element:<App/>,
     children:[
-      {
+      
+        {
         path:'/',
-        element:<Home/>
+        element:(
+          <AuthLayout authentication={false}>
+            <Home/>
+          </AuthLayout>
+        )
+        
+
+
+
 
       },
       {
@@ -71,6 +80,7 @@ const router=createBrowserRouter([
           path: "/post/:slug",
           element: <Post />,
       },
+    
     ]
   }
 ])
