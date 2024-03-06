@@ -8,16 +8,18 @@ function AllPosts() {
     
     const userData = useSelector((state) => state.auth.userData);
 
-    useEffect(()=>{},[]);
-    appwriteService.getPosts([])
-    .then((posts)=>{
-        if(posts){
-            const userPosts = posts.documents.filter((post)=>post.userId === userData.$id)
-            setPosts(userPosts)
-        }
-    })
-    .catch((error)=> console.log(error))
-
+    useEffect(()=>{
+        appwriteService.getPosts([])
+        .then((posts)=>{
+            if(posts){
+                const userPosts = posts.documents.filter((post)=>post.userId === userData.$id)
+                setPosts(userPosts)
+            }
+        })
+        .catch((error)=> console.log(error))
+    
+    
+    },[]);
 
     if (posts.length === 0) {
         return (
