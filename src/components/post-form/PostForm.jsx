@@ -5,6 +5,7 @@ import appwriteService from "../../appwrite/appWriteConfig";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+
 export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
@@ -19,7 +20,6 @@ export default function PostForm({ post }) {
     const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
-        console.log("FORM SUBMIT", data);
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
@@ -114,12 +114,7 @@ export default function PostForm({ post }) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button
-                    type="submit"
-                    bgColor={post ? "bg-green-500" : undefined}
-                    className="w-full"
-                    onClick={(e) => { "SUBMIT BUTTON CLICKED!!!" }}
-                >
+                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>
